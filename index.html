@@ -1124,7 +1124,7 @@
             state.profil.nipKepsek = document.getElementById('prof-nip').value.trim();
             state.profil.alamat = document.getElementById('prof-alamat').value.trim();
             saveState();
-            addLog('Memperbarui Profil Madrasah');
+            addLog('Admin Memperbarui Profil Madrasah');
             showAlert('Tersimpan', 'Profil madrasah berhasil diperbarui.', 'success').then(() => {
                 renderLayout();
             });
@@ -1358,7 +1358,7 @@
                         }
                     });
                     saveState();
-                    addLog(`Upload massal: ${added} ditambahkan, ${updated} diperbarui`);
+                    addLog(`Admin ${state.currentUser.name} mengunggah data guru secara massal: ${added} ditambahkan, ${updated} diperbarui`);
                     showAlert('Berhasil', `Data sukses diimpor ke Database. ${added} ditambahkan, ${updated} diperbarui.`, 'success').then(() => navigate('guru'));
                 } catch (err) {
                     showAlert('Gagal', 'Terjadi kesalahan saat membaca file Excel. Pastikan format sesuai template.', 'error');
@@ -1468,13 +1468,13 @@
                         const idx = state.dataGuru.findIndex(x => x.nuptk === data.nuptk);
                         data.foto = state.dataGuru[idx].foto;
                         state.dataGuru[idx] = data;
-                        addLog(`Memperbarui profil guru: ${data.nama}`);
+                        addLog(`Admin ${state.currentUser.name} memperbarui data ${data.nama}`);
                     } else {
                         const exists = state.dataGuru.find(x => x.nuptk === data.nuptk);
                         if (exists) return showAlert('Gagal', 'ID ini sudah terdaftar!', 'error').then(() => showFormGuru(data));
                         data.foto = '';
                         state.dataGuru.push(data);
-                        addLog(`Menambah data guru: ${data.nama}`);
+                        addLog(`Admin ${state.currentUser.name} menambahkan ${data.nama}`);
                     }
                     saveState();
                     navigate('guru');
@@ -1493,6 +1493,9 @@
         }
 
         function hapusGuru(nuptk) {
+            const guru = state.dataGuru.find(x => x.nuptk === nuptk);
+            const namaGuru = guru ? guru.nama : nuptk;
+
             Swal.fire({
                 title: 'Hapus Permanen?',
                 text: "Data profil guru ini akan dihapus dari sistem.",
@@ -1506,7 +1509,7 @@
                 if (res.isConfirmed) {
                     state.dataGuru = state.dataGuru.filter(x => x.nuptk !== nuptk);
                     saveState();
-                    addLog(`Menghapus data guru NUPTK: ${nuptk}`);
+                    addLog(`Admin ${state.currentUser.name} menghapus data ${namaGuru}`);
                     navigate('guru');
                 }
             });
@@ -1887,7 +1890,7 @@
 
                     state.rekapAbsen = dataToKeep;
                     saveState();
-                    addLog(`Menghapus data absensi massal (Filter: ${fBulan || 'Semua'})`);
+                    addLog(`Admin ${state.currentUser.name} menghapus data absensi massal (Filter: ${fBulan || 'Semua'})`);
                     loadTableRekap();
                     Swal.fire({ icon: 'success', title: 'Data Dihapus', toast: true, position: 'top-end', timer: 2500, showConfirmButton: false });
                 }
@@ -2011,7 +2014,7 @@
             state.pengaturan.waktuMulai = document.getElementById('set-mulai').value;
             state.pengaturan.batasAkhir = document.getElementById('set-akhir').value;
             saveState();
-            addLog('Mengubah pengaturan jam buka tutup absen');
+            addLog('Admin ${state.currentUser.name} mengubah pengaturan jam buka tutup absen');
             Swal.fire({ icon: 'success', title: 'Jadwal Diperbarui', toast: true, position: 'top-end', timer: 2500, showConfirmButton: false });
         }
 
@@ -2084,7 +2087,7 @@
                 date: new Date().toLocaleString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
             });
             saveState();
-            addLog(`Mempublikasikan pengumuman baru`);
+            addLog(`Admin ${state.currentUser.name} mempublikasikan pengumuman baru`);
             renderPengumuman(document.getElementById('main-content'));
         }
         function hapusPengumuman(id) {
@@ -2604,7 +2607,7 @@
             }
 
             saveState();
-            addLog(`${state.currentUser.name} mengajukan Cuti (${mulaiStr} s.d ${akhirStr})`);
+            addLog(`${state.currentUser.name} mengajukan cuti selama ${addedCount} hari kerja`);
 
             Swal.fire({
                 title: 'Pengajuan Selesai!',
@@ -2630,8 +2633,8 @@
                 Swal.fire({
                     title: `Keterangan ${status}`,
                     input: 'textarea',
-                    inputLabel: 'Tuliskan alasan/keterangan secara singkat',
-                    inputPlaceholder: 'Misal: Sakit demam, atau ada acara keluarga...',
+                    inputLabel: 'Tuliskan keterangan secara singkat',
+                    inputPlaceholder: 'Misal: Sakit demam atau ada acara keluarga...',
                     showCancelButton: true,
                     confirmButtonText: 'Kirim',
                     cancelButtonText: 'Batal',

@@ -149,6 +149,13 @@
                 padding-bottom: 85px !important;
             }
         }
+
+        /* Memastikan karakter sandi mudah dibedakan saat ditampilkan */
+        #fm-pass,
+        #eb-pass {
+            font-family: 'Tahoma', sans-serif !important;
+            letter-spacing: 1.5px !important;
+        }
     </style>
 </head>
 
@@ -446,8 +453,8 @@
                             <h2 class="text-2xl font-bold text-center text-slate-800 mb-8">Masuk Sebagai</h2>
                                                         
                             <div class="flex border-b border-slate-200 mb-8 bg-brand-200/50 rounded-lg p-1">
-                                <button onclick="switchLoginTab('guru')" id="tab-guru" class="w-1/2 py-2.5 text-center font-bold text-brand-700 bg-white shadow-sm rounded-lg transition-all">Guru</button>
-                                <button onclick="switchLoginTab('admin')" id="tab-admin" class="w-1/2 py-2.5 text-center font-bold text-slate-700 hover:text-slate-700 transition-all rounded-lg">Admin</button>
+                                <button onclick="switchLoginTab('guru')" id="tab-guru" class="w-1/2 py-2 text-center font-semibold text-brand-700 bg-white shadow-sm rounded-lg transition-all">Guru</button>
+                                <button onclick="switchLoginTab('admin')" id="tab-admin" class="w-1/2 py-2 text-center font-semibold text-slate-700 hover:text-slate-700 rounded-lg transition-all">Admin</button>
                             </div>
 
                             <div id="form-guru" class="space-y-5 fade-in">
@@ -455,18 +462,20 @@
                                     <label class="block text-sm font-semibold text-slate-700 mb-2">User ID</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="fas fa-id-card text-brand-500"></i></div>
-                                        <input type="text" id="login-nuptk" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="pl-10 w-full p-2.5 bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:bg-white transition-all outline-none font-medium text-slate-700 shadow-sm" placeholder="Masukkan NUPTK/PEG ID">
+                                        <input type="text" id="login-nuptk" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="pl-10 w-full p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:bg-white transition-all outline-none font-medium text-slate-700 shadow-sm" placeholder="Masukkan NUPTK/PEG ID">
                                     </div>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="fas fa-lock text-brand-500"></i></div>
-                                        <input type="password" id="login-pass-guru" class="pl-10 w-full p-2.5 bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:bg-white transition-all outline-none font-medium text-slate-700 shadow-sm" placeholder="••••••••">
+                                        <input type="password" id="login-pass-guru" class="pl-10 w-full p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:bg-white transition-all outline-none font-medium text-slate-700 shadow-sm" placeholder="••••••••">
                                         <button onclick="togglePass('login-pass-guru')" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-brand-600 transition-colors"><i class="fas fa-eye"></i></button>
                                     </div>
                                 </div>
-                                <button onclick="processLogin('guru')" class="w-full bg-brand-600 hover:bg-brand-800 text-white font-bold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 mt-2">Masuk</button>
+                                <button onclick="processLogin('guru')" class="w-full bg-brand-600 hover:bg-brand-800 text-white font-bold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 mt-2">
+                                    <i class="fas fa-sign-in-alt"></i> Masuk
+                                </button>
                             </div>
 
                             <div id="form-admin" class="hidden space-y-5 fade-in">
@@ -474,20 +483,22 @@
                                     <label class="block text-sm font-semibold text-slate-700 mb-2">Nomor Statistik Madrasah</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="fas fa-school text-brand-500"></i></div>
-                                        <input type="text" id="login-nsm" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="pl-10 w-full p-2.5 bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 focus:bg-white transition-all outline-none font-medium text-slate-700 shadow-sm" placeholder="Masukkan NSM">
+                                        <input type="text" id="login-nsm" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="pl-10 w-full p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 focus:bg-white transition-all outline-none font-medium text-slate-700 shadow-sm" placeholder="Masukkan NSM">
                                     </div>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-slate-700 mb-2">Password Admin</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="fas fa-lock text-brand-500"></i></div>
-                                        <input type="password" id="login-pass-admin" class="pl-10 w-full p-2.5 bg-slate-50/50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 focus:bg-white transition-all outline-none font-medium text-slate-700 shadow-sm" placeholder="••••••••">
+                                        <input type="password" id="login-pass-admin" class="pl-10 w-full p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 focus:bg-white transition-all outline-none font-medium text-slate-700 shadow-sm" placeholder="••••••••">
                                         <button onclick="togglePass('login-pass-admin')" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-700 transition-colors"><i class="fas fa-eye"></i></button>
                                     </div>
                                 </div>
-                                <button onclick="processLogin('admin')" class="w-full bg-brand-600 hover:bg-brand-800 text-white font-bold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 mt-2 mb-4">Masuk</button>
+                                <button onclick="processLogin('admin')" class="w-full bg-brand-600 hover:bg-brand-800 text-white font-bold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 mt-2">
+                                    <i class="fas fa-sign-in-alt"></i> Masuk
+                                </button>
                                 
-                                <div class="flex justify-between items-center text-sm px-1 border-t border-slate-100 pt-2 mt-2">
+                                <div class="flex justify-between items-center text-sm px-1 border-t border-slate-100 pt-2 mt-1">
                                     <button onclick="showAdminModal('forgot')" class="text-slate-500 hover:text-brand-600 font-semibold transition-colors">Lupa Password Admin?</button>
                                     <button onclick="showAdminModal('register')" class="text-slate-500 hover:text-brand-600 font-semibold transition-colors">Buat Akun Admin</button>
                                 </div>
@@ -506,12 +517,12 @@
 
             if (type === 'guru') {
                 formGuru.classList.remove('hidden'); formAdmin.classList.add('hidden');
-                tabGuru.className = "w-1/2 py-2.5 text-center font-bold text-brand-700 bg-white shadow-sm rounded-md transition-all";
-                tabAdmin.className = "w-1/2 py-2.5 text-center font-semibold text-slate-500 hover:text-slate-700 transition-all rounded-md";
+                tabGuru.className = "w-1/2 py-2 text-center font-semibold text-brand-700 bg-white shadow-sm rounded-md transition-all";
+                tabAdmin.className = "w-1/2 py-2 text-center font-semibold text-slate-500 hover:text-slate-700 transition-all rounded-md";
             } else {
                 formGuru.classList.add('hidden'); formAdmin.classList.remove('hidden');
-                tabAdmin.className = "w-1/2 py-2.5 text-center font-bold text-slate-800 bg-white shadow-sm rounded-md transition-all";
-                tabGuru.className = "w-1/2 py-2.5 text-center font-semibold text-slate-500 hover:text-slate-700 transition-all rounded-md";
+                tabAdmin.className = "w-1/2 py-2 text-center font-semibold text-brand-700 bg-white shadow-sm rounded-md transition-all";
+                tabGuru.className = "w-1/2 py-2 text-center font-semibold text-slate-500 hover:text-slate-700 transition-all rounded-md";
             }
         }
 
@@ -582,7 +593,7 @@
                 cancelButtonColor: '#94a3b8',
                 confirmButtonText: 'Ya, Keluar!',
                 cancelButtonText: 'Batal',
-                customClass: { confirmButton: 'rounded-lg px-6', cancelButton: 'rounded-lg px-6' }
+                customClass: { confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold' }
             }).then((result) => {
                 if (result.isConfirmed) {
                     if (state.currentUser) addLog(`${state.currentUser.name} Logout`);
@@ -605,29 +616,29 @@
                         <div class="text-left space-y-4">
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-1">Nama Madrasah</label>
-                                <input type="text" id="reg-nama" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none transition-all">
+                                <input type="text" id="reg-nama" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 font-semibold outline-none transition-all">
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-1">Nomor Statistik Madrasah</label>
-                                <input type="text" id="reg-nsm" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none transition-all">
+                                <input type="text" id="reg-nsm" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 font-semibold outline-none transition-all">
                             </div>
                             <div class="relative">
                                 <label class="block text-sm font-semibold text-slate-700 mb-1">Password Baru</label>
-                                <input type="password" id="reg-pass" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none transition-all pr-10">
+                                <input type="password" id="reg-pass" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 font-semibold outline-none transition-all pr-10">
                                 <button onclick="togglePass('reg-pass')" class="absolute bottom-3 right-3 text-slate-400 hover:text-brand-600"><i class="fas fa-eye"></i></button>
                             </div>
                             <div class="relative">
                                 <label class="block text-sm font-semibold text-slate-700 mb-1">Konfirmasi Password</label>
-                                <input type="password" id="reg-pass2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none transition-all pr-10">
+                                <input type="password" id="reg-pass2" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 font-semibold outline-none transition-all pr-10">
                                 <button onclick="togglePass('reg-pass2')" class="absolute bottom-3 right-3 text-slate-400 hover:text-brand-600"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
                     `,
                     showCancelButton: true,
-                    confirmButtonText: 'Simpan',
+                    confirmButtonText: 'Daftarkan',
                     cancelButtonText: 'Batal',
                     confirmButtonColor: '#0d9488',
-                    customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6', cancelButton: 'rounded-lg px-6', title: 'text-2xl font-bold' },
+                    customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold', title: 'text-2xl font-bold' },
                     preConfirm: () => {
                         const nama = document.getElementById('reg-nama').value.trim();
                         const nsm = document.getElementById('reg-nsm').value.trim();
@@ -660,7 +671,7 @@
                         <div class="text-left space-y-4">
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-1">Masukkan NSM Terdaftar</label>
-                                <input type="text" id="for-nsm" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none transition-all" placeholder="Nomor Statistik Madrasah">
+                                <input type="text" id="for-nsm" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 font-semibold outline-none transition-all" placeholder="Nomor Statistik Madrasah">
                             </div>
                         </div>
                     `,
@@ -668,7 +679,7 @@
                     confirmButtonText: 'Lanjut',
                     cancelButtonText: 'Batal',
                     confirmButtonColor: '#0d9488',
-                    customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6', cancelButton: 'rounded-lg px-6', title: 'text-2xl font-bold' },
+                    customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold', title: 'text-2xl font-bold' },
                     preConfirm: () => {
                         const nsm = document.getElementById('for-nsm').value.trim();
                         if (!nsm) {
@@ -689,12 +700,12 @@
                                 <div class="text-left space-y-4">
                                     <div class="relative">
                                         <label class="block text-sm font-semibold text-slate-700 mb-1">Password Baru</label>
-                                        <input type="password" id="for-pass" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none transition-all pr-10">
+                                        <input type="password" id="for-pass" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 font-semibold outline-none transition-all pr-10">
                                         <button onclick="togglePass('for-pass')" class="absolute bottom-3 right-3 text-slate-400 hover:text-brand-600"><i class="fas fa-eye"></i></button>
                                     </div>
                                     <div class="relative">
                                         <label class="block text-sm font-semibold text-slate-700 mb-1">Konfirmasi Password Baru</label>
-                                        <input type="password" id="for-pass2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none transition-all pr-10">
+                                        <input type="password" id="for-pass2" class="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 font-semibold outline-none transition-all pr-10">
                                         <button onclick="togglePass('for-pass2')" class="absolute bottom-3 right-3 text-slate-400 hover:text-brand-600"><i class="fas fa-eye"></i></button>
                                     </div>
                                 </div>
@@ -703,7 +714,7 @@
                             confirmButtonText: 'Simpan',
                             cancelButtonText: 'Batal',
                             confirmButtonColor: '#0d9488',
-                            customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6', cancelButton: 'rounded-lg px-6', title: 'text-2xl font-bold' },
+                            customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold', title: 'text-2xl font-bold' },
                             preConfirm: () => {
                                 const pass1 = document.getElementById('for-pass').value;
                                 const pass2 = document.getElementById('for-pass2').value;
@@ -740,7 +751,7 @@
 
             if (isAdmin) {
                 headerLogo = state.profil.logo || 'https://placehold.co/100x100/0d9488/ffffff?text=ADM';
-                headerTitle = 'Administrator';
+                headerTitle = 'ADMINISTRATOR';
                 headerSub = state.profil.nsm ? `NSM: ${state.profil.nsm}` : '-';
             } else {
                 const guru = state.dataGuru.find(g => g.nuptk === state.currentUser.id);
@@ -810,8 +821,8 @@
                         <div class="relative ml-auto">
                             <button onclick="toggleHeaderMenu()" class="flex items-center gap-3 text-right py-1 px-1.5 sm:py-1.5 sm:px-3 rounded-full border-slate-100 transition-all">
                                 <div class="hidden sm:block pl-2 text-right">
-                                    <h3 class="text-medium text-brand-200 font-bold line-clamp-1">${headerTitle}</h3>
-                                    <p class="text-sm text-brand-100 font-bold tracking-wide mt-0.5">${headerSub}</p>
+                                    <h3 class="text-sm text-brand-200 font-bold line-clamp-1">${headerTitle}</h3>
+                                    <p class="text-xs text-brand-100 font-bold tracking-wide mt-0.5">${headerSub}</p>
                                 </div>
                                 <img src="${headerLogo}" alt="Profil" class="w-12 h-12 sm:w-12 sm:h-12 rounded-full object-cover border-slate-100 shadow-sm shrink-0 bg-transparent">
                             </button>
@@ -833,7 +844,7 @@
                 </main>
             `;
 
-            navigate(isAdmin ? 'dashboard' : 'absen');
+            navigate(isAdmin ? 'dashboard' : 'biodata');
         }
 
         function navigate(view) {
@@ -991,7 +1002,7 @@
                 confirmButtonColor: '#e11d48',
                 confirmButtonText: 'Ya, Bersihkan',
                 cancelButtonText: 'Batal',
-                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6', cancelButton: 'rounded-lg px-6' }
+                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold' }
             }).then((result) => {
                 if (result.isConfirmed) {
                     state.logAktivitas = [];
@@ -1013,52 +1024,63 @@
                     <div class="p-8">
                         <div class="flex flex-col md:flex-row gap-10">
                             <div class="w-full md:w-1/3 flex flex-col items-center">
-                                <div class="w-40 h-40 rounded-2xl border-2 border-dashed border-slate-300 drop-shadow-sm bg-transparent mb-4 flex items-center justify-center p-2 relative group">
+                                <div class="w-40 h-40 rounded-2xl border-2 border-dashed border-slate-300 drop-shadow-sm bg-transparent mb-5 flex items-center justify-center p-2 relative group">
                                     <img id="preview-logo" src="${p.logo || 'https://placehold.co/200x200/f8fafc/94a3b8?text=Unggah+Logo'}" class="w-full h-full object-contain">
                                 </div>
-                                <div class="flex gap-3 w-24 justify-center">
-                                    <label class="bg-brand-600 hover:bg-brand-700 text-white text-center font-bold py-2.5 px-4 rounded-lg cursor-pointer transition-all shadow-sm flex-1 text-sm flex items-center justify-center gap-2">
+                                <div class="flex gap-3 justify-center">
+                                    <label class="bg-brand-600 hover:bg-brand-700 text-white text-center font-bold py-2 px-4 rounded-lg cursor-pointer transition-all shadow-sm text-sm flex items-center justify-center gap-2">
                                         <i class="fas fa-upload"></i> Ubah Logo
                                         <input type="file" id="input-logo" class="hidden" accept="image/*" onchange="handleLogoUpload(event)">
                                     </label>
-                                    <button onclick="hapusLogo()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 py-2.5 px-4 rounded-lg transition-all shadow-sm border border-rose-100 text-sm flex items-center justify-center">
-                                        <i class="fas fa-trash"></i>
+                                    <button onclick="hapusLogo()" class="bg-rose-100 hover:bg-rose-200 text-rose-600 text-center font-bold py-2 px-4 rounded-lg transition-all shadow-sm border-rose-100 text-sm flex items-center justify-center gap-2">
+                                        <i class="fas fa-trash"></i> Hapus Logo
                                     </button>
                                 </div>
                                 <p class="text-xs font-semibold text-slate-400 text-center mt-4 bg-slate-50 p-3 rounded-lg border border-slate-100">Disarankan: Logo resolusi tinggi tanpa latar belakang (PNG).</p>
                             </div>
                             
-                            <div class="w-full md:w-2/3 space-y-5">
-                                <div>
-                                    <label class="block text-sm font-bold text-slate-700 mb-1.5">Nama Madrasah</label>
-                                    <input type="text" id="prof-nama" value="${p.nama}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700">
+                            <div class="w-full md:w-2/3 space-y-4">
+                                <div class="grid grid-cols-[160px_16px_1fr] sm:grid-cols-[200px_20px_1fr] items-center">
+                                    <label class="text-medium font-bold text-slate-700">Nama Madrasah</label>
+                                    <span class="text-medium font-bold text-slate-700 text-center">:</span>
+                                    <input type="text" id="prof-nama" value="${p.nama}" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700">
                                 </div>
-                                <div class="grid grid-cols-2 gap-5">
-                                    <div>
-                                        <label class="block text-sm font-bold text-slate-700 mb-1.5">NSM <span class="text-[10px] bg-slate-200 text-slate-500 px-2 py-0.5 rounded ml-1 font-bold">Terkunci</span></label>
-                                        <input type="text" value="${p.nsm}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" disabled class="w-full p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-slate-500 font-semibold cursor-not-allowed">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-bold text-slate-700 mb-1.5">NPSN <span class="text-[10px] bg-slate-200 text-slate-500 px-2 py-0.5 rounded ml-1 font-bold">Hanya Sekali Isi, Tidak bisa Diubah</span></label>
-                                        <input type="text" id="prof-npsn" value="${p.npsn}" ${p.npsn ? 'disabled class="w-full p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-slate-500 font-semibold cursor-not-allowed"' : 'class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700"'}>
-                                    </div>
+
+                                <div class="grid grid-cols-[160px_16px_1fr] sm:grid-cols-[200px_20px_1fr] items-center">
+                                    <label class="text-medium font-bold text-slate-700">NSM</label>
+                                    <span class="text-medium font-bold text-slate-700 text-center">:</span>
+                                    <input type="text" value="${p.nsm}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" disabled class="w-full p-2 border border-slate-400 rounded-lg text-slate-500 font-semibold cursor-not-allowed">
                                 </div>
-                                <div class="grid grid-cols-2 gap-5">
+
+                                <div class="grid grid-cols-[160px_16px_1fr] sm:grid-cols-[200px_20px_1fr] items-start">
+                                    <label class="text-medium font-bold text-slate-700 mt-2.5">NPSN</label>
+                                    <span class="text-medium font-bold text-slate-700 text-center mt-2.5">:</span>
                                     <div>
-                                        <label class="block text-sm font-bold text-slate-700 mb-1.5">Kepala Madrasah</label>
-                                        <input type="text" id="prof-kepsek" value="${p.kepsek}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-bold text-slate-700 mb-1.5">NIP Kepala Madrasah</label>
-                                        <input type="text" id="prof-nip" value="${p.nipKepsek}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700">
+                                        <input type="text" id="prof-npsn" value="${p.npsn}" ${p.npsn ? 'disabled class="w-full p-2 border border-slate-400 rounded-lg text-slate-500 font-semibold cursor-not-allowed"' : 'class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700"'}>
+                                        <p class="text-[10px] bg-slate-200 text-slate-500 px-2 py-0.5 rounded font-bold inline-block mt-1">Hanya Sekali Isi, Setelah Disimpan Tidak Bisa Diubah</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-slate-700 mb-1.5">Alamat Lengkap</label>
-                                    <textarea id="prof-alamat" rows="3" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700">${p.alamat}</textarea>
+
+                                <div class="grid grid-cols-[160px_16px_1fr] sm:grid-cols-[200px_20px_1fr] items-center">
+                                    <label class="text-medium font-bold text-slate-700">Nama Kepala Madrasah</label>
+                                    <span class="text-medium font-bold text-slate-700 text-center">:</span>
+                                    <input type="text" id="prof-kepsek" value="${p.kepsek}" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700">
                                 </div>
+
+                                <div class="grid grid-cols-[160px_16px_1fr] sm:grid-cols-[200px_20px_1fr] items-center">
+                                    <label class="text-medium font-bold text-slate-700">NIP Kepala Madrasah</label>
+                                    <span class="text-medium font-bold text-slate-700 text-center">:</span>
+                                    <input type="text" id="prof-nip" value="${p.nipKepsek}" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700">
+                                </div>
+
+                                <div class="grid grid-cols-[160px_16px_1fr] sm:grid-cols-[200px_20px_1fr] items-start">
+                                    <label class="text-medium font-bold text-slate-700 mt-2.5">Alamat Lengkap</label>
+                                    <span class="text-medium font-bold text-slate-700 text-center mt-2.5">:</span>
+                                    <textarea id="prof-alamat" rows="3" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all font-semibold text-slate-700">${p.alamat}</textarea>
+                                </div>
+                                
                                 <div class="pt-6 border-t border-slate-100 text-right mt-2">
-                                    <button onclick="simpanProfil()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-8 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 inline-flex"></i> Simpan Perubahan</button>
+                                    <button onclick="simpanProfil()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 inline-flex"><i class="fas fa-save"></i> Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -1135,25 +1157,25 @@
                             <h2 class="text-xl font-extrabold text-slate-800">Data Guru</h2>
                         </div>
                         <div class="flex gap-2 w-full sm:w-auto">
-                            <button onclick="showKelolaGuruModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-5 rounded-lg shadow-md flex items-center justify-center transition-all transform hover:-translate-y-0.5 text-sm">
-                                <i class="fas fa-plus-circle mr-2"></i> Kelola Data
+                            <button onclick="showKelolaGuruModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-5 rounded-lg shadow-md flex items-center justify-center transition-all transform hover:-translate-y-0.5 text-sm">
+                                <i class="fas fa-plus-circle mr-2"></i> Tambah Data
                             </button>
-                            <button onclick="exportDataGuru()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-5 rounded-lg shadow-md flex items-center justify-center transition-all transform hover:-translate-y-0.5 text-sm">
+                            <button onclick="exportDataGuru()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-5 rounded-lg shadow-md flex items-center justify-center transition-all transform hover:-translate-y-0.5 text-sm">
                                 <i class="fas fa-file-excel mr-2"></i> Export Data
                             </button>
                         </div>
                     </div>
                     <div class="overflow-x-auto custom-scrollbar">
-                        <table class="w-full text-left text-sm text-slate-600">
+                        <table class="w-full text-left text-sm text-slate-600" id="tabel-guru">
                             <thead class="bg-slate-100 text-slate-700 font-bold">
                                 <tr>
                                     <th class="py-3 px-3 text-center min-w-[40px]">No</th>
                                     <th class="py-3 px-3 text-center min-w-[70px]">Foto</th>
-                                    <th class="py-3 px-3 text-center min-w-[160px]">NUPTK/PEG ID</th>
-                                    <th class="py-3 px-3 text-center min-w-[195px]">Nama Lengkap</th>
-                                    <th class="py-3 px-3 text-center min-w-[220px]">Tempat, Tanggal Lahir</th>
-                                    <th class="py-3 px-3 text-center min-w-[110px]">Jabatan</th>
-                                    <th class="py-3 px-3 text-center min-w-[120px]">Pendidikan</th>
+                                    <th class="py-3 px-3 text-center min-w-[160px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-guru', 2, 'string')">NUPTK/PEG ID <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[195px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-guru', 3, 'string')">Nama Lengkap <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[220px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-guru', 4, 'string')">Tempat, Tanggal Lahir <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[110px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-guru', 5, 'string')">Jabatan <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[120px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-guru', 6, 'string')">Pendidikan <i class="fas fa-sort ml-1 text-slate-400"></i></th>
                                     <th class="py-3 px-3 text-center min-w-[80px]">Aksi</th>
                                 </tr>
                             </thead>
@@ -1168,10 +1190,10 @@
 
         function showKelolaGuruModal() {
             Swal.fire({
-                title: 'Opsi Kelola Data',
+                title: 'Opsi Tambah Data',
                 html: `
                     <div class="flex flex-col gap-4 mt-6">
-                        <button onclick="Swal.close(); showFormGuru()" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 border-2 border-blue-200 font-bold py-2.5 px-3 rounded-lg transition-all flex items-center justify-center gap-3 shadow-sm">
+                        <button onclick="Swal.close(); showFormGuru()" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 border-2 border-blue-200 font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-3 shadow-sm">
                             <i class="fas fa-user-plus text-lg"></i> Tambah Manual
                         </button>
                         <div class="flex items-center my-2">
@@ -1179,10 +1201,10 @@
                         	<span class="flex-shrink-0 mx-2 text-slate-500 text-medium font-medium">atau</span>
                         	<div class="flex-grow border-t border-slate-300"></div>
                         </div>
-                        <button onclick="Swal.close(); downloadTemplate()" class="w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border-2 border-emerald-200 font-bold py-2.5 px-4 rounded-lg transition-all flex items-center justify-center gap-3 shadow-sm">
+                        <button onclick="Swal.close(); downloadTemplate()" class="w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border-2 border-emerald-200 font-bold py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-3 shadow-sm">
                             <i class="fas fa-file-excel text-lg"></i> Unduh Template
                         </button>
-                        <label class="w-full bg-amber-50 hover:bg-amber-100 text-amber-700 border-2 border-amber-200 font-bold py-2.5 px-3 rounded-lg transition-all flex items-center justify-center gap-3 shadow-sm cursor-pointer relative overflow-hidden group">
+                        <label class="w-full bg-amber-50 hover:bg-amber-100 text-amber-700 border-2 border-amber-200 font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-3 shadow-sm cursor-pointer relative overflow-hidden group">
                             <i class="fas fa-cloud-upload-alt text-lg group-hover:-translate-y-1 transition-transform"></i> Unggah Data
                             <input type="file" class="hidden" accept=".xlsx, .xls" onchange="Swal.close(); uploadTemplate(event)">
                         </label>
@@ -1282,6 +1304,15 @@
             }
         }
 
+        function generateRandomPass() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let pass = "";
+            for (let i = 0; i < 6; i++) {
+                pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return pass;
+        }
+
         function uploadTemplate(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -1308,7 +1339,7 @@
                                 tglLahir: (row['Tanggal Lahir (YYYY-MM-DD)'] || '').toString().trim(),
                                 jabatan: (row['Jabatan'] || 'Guru').toString().trim(),
                                 pendidikan: (row['Pendidikan'] || '').toString().trim(),
-                                password: (row['Password'] || nuptk).toString().trim(),
+                                password: (row['Password'] || generateRandomPass()).toString().trim(),
                                 foto: ''
                             };
 
@@ -1337,55 +1368,67 @@
         function showFormGuru(existingData = null) {
             const isEdit = !!existingData;
             const title = isEdit ? 'Edit Data Guru' : 'Tambah Guru Baru';
-            const g = existingData || { nuptk: '', nama: '', tmLahir: '', tglLahir: '', jabatan: '', pendidikan: '', password: '' };
+            const g = existingData || { nuptk: '', nama: '', tmLahir: '', tglLahir: '', jabatan: '', pendidikan: '', password: generateRandomPass() };
 
             const passField = isEdit ?
                 `<input type="hidden" id="fm-pass" value="${g.password}">` :
-                `<div>
-                    <label class="block text-sm font-bold text-slate-700 mb-1.5">Kata Sandi Akses</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="fm-pass" value="${g.password}" readonly placeholder="Klik Generate" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg outline-none text-sm text-slate-600 font-bold cursor-not-allowed">
-                        <button type="button" onclick="generatePasswordForGuru()" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 px-4 rounded-lg shadow-md transition-all shrink-0"><i class="fas fa-random mr-1"></i> Generate</button>
+                `<div class="flex items-start gap-4">
+                    <label class="w-1/3 text-sm font-bold text-slate-700 pt-2.5">Kata Sandi Akses</label>
+                    <div class="w-2/3">
+                        <div class="flex gap-2">
+                            <input type="text" id="fm-pass" value="${g.password}" readonly placeholder="Klik Generate" class="w-full p-2 bg-slate-100 border border-slate-400 rounded-lg outline-none text-sm text-slate-700 font-bold">
+                            <button type="button" onclick="generatePasswordForGuru()" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold py-2 px-4 rounded-lg shadow-md transition-all shrink-0"><i class="fas fa-random mr-1"></i> Generate</button>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-2 font-medium"><i class="fas fa-info-circle mr-1"></i> Sandi otomatis atau klik generate untuk acak.</p>
                     </div>
-                    <p class="text-xs text-slate-500 mt-2 font-medium"><i class="fas fa-info-circle mr-1"></i> Sandi otomatis atau klik generate untuk acak.</p>
                 </div>`;
 
             const content = `
                 <div class="text-left space-y-4 mt-6">
-                    <div>
-                        <label class="block text-sm font-bold text-slate-700 mb-1.5">NUPTK/PEG ID</label>
-                        <input type="text" id="fm-nuptk" value="${g.nuptk}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-slate-700 mb-1.5">Nama Lengkap</label>
-                        <input type="text" id="fm-nama" value="${g.nama}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-1.5">Tempat Lahir</label>
-                            <input type="text" id="fm-tmlahir" value="${g.tmLahir}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-1.5">Tanggal Lahir</label>
-                            <input type="date" id="fm-tgllahir" value="${g.tglLahir}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
+                    <div class="flex items-center gap-4">
+                        <label class="w-1/3 text-sm font-bold text-slate-700">NUPTK/PEG ID</label>
+                        <div class="w-2/3">
+                            <input type="text" id="fm-nuptk" value="${g.nuptk}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" placeholder="Masukkan NUPTK atau PEG ID" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-bold text-slate-700 mb-1.5">Jabatan</label>
-                        <input type="text" id="fm-jabatan" value="${g.jabatan}" placeholder="Contoh: Guru Kelas / Mapel" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
+                    <div class="flex items-center gap-4">
+                        <label class="w-1/3 text-sm font-bold text-slate-700">Nama Lengkap</label>
+                        <div class="w-2/3">
+                            <input type="text" id="fm-nama" value="${g.nama}" placeholder="Masukkan Nama Lengkap" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-bold text-slate-700 mb-1.5">Pendidikan Terakhir</label>
-                        <select id="fm-pendidikan" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold cursor-pointer">
-                            <option value="" ${!g.pendidikan ? 'selected' : ''} disabled>Pilih Pendidikan</option>
-                            <option value="SMA / MA / SMK" ${g.pendidikan === 'SMA / MA / SMK' ? 'selected' : ''}>SMA / MA / SMK</option>
-                            <option value="D1 (Diploma)" ${g.pendidikan === 'D1 (Diploma)' ? 'selected' : ''}>D1 (Diploma)</option>
-                            <option value="D2 (Diploma)" ${g.pendidikan === 'D2 (Diploma)' ? 'selected' : ''}>D2 (Diploma)</option>
-                            <option value="D3 (Diploma)" ${g.pendidikan === 'D3 (Diploma)' ? 'selected' : ''}>D3 (Diploma)</option>
-                            <option value="D4 (Diploma) / S1 (Sarjana)" ${g.pendidikan === 'D4 (Diploma) / S1 (Sarjana)' ? 'selected' : ''}>D4 (Diploma) / S1 (Sarjana)</option>
-                            <option value="S2 (Magister)" ${g.pendidikan === 'S2 (Magister)' ? 'selected' : ''}>S2 (Magister)</option>
-                            <option value="S3 (Doktor)" ${g.pendidikan === 'S3 (Doktor)' ? 'selected' : ''}>S3 (Doktor)</option>
-                        </select>
+                    <div class="flex items-center gap-4">
+                        <label class="w-1/3 text-sm font-bold text-slate-700">Tempat Lahir</label>
+                        <div class="w-2/3">
+                            <input type="text" id="fm-tmlahir" value="${g.tmLahir}" placeholder="Masukkan Tempat Lahir" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <label class="w-1/3 text-sm font-bold text-slate-700">Tanggal Lahir</label>
+                        <div class="w-2/3">
+                            <input type="date" id="fm-tgllahir" value="${g.tglLahir}" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <label class="w-1/3 text-sm font-bold text-slate-700">Jabatan</label>
+                        <div class="w-2/3">
+                            <input type="text" id="fm-jabatan" value="${g.jabatan}" placeholder="Contoh: Guru Kelas / Mapel" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <label class="w-1/3 text-sm font-bold text-slate-700">Pendidikan</label>
+                        <div class="w-2/3">
+                            <select id="fm-pendidikan" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold cursor-pointer">
+                                <option value="" ${!g.pendidikan ? 'selected' : ''} disabled>Pilih Pendidikan</option>
+                                <option value="SMA / MA / SMK" ${g.pendidikan === 'SMA / MA / SMK' ? 'selected' : ''}>SMA / MA / SMK</option>
+                                <option value="D1 (Diploma)" ${g.pendidikan === 'D1 (Diploma)' ? 'selected' : ''}>D1 (Diploma)</option>
+                                <option value="D2 (Diploma)" ${g.pendidikan === 'D2 (Diploma)' ? 'selected' : ''}>D2 (Diploma)</option>
+                                <option value="D3 (Diploma)" ${g.pendidikan === 'D3 (Diploma)' ? 'selected' : ''}>D3 (Diploma)</option>
+                                <option value="D4 (Diploma) / S1 (Sarjana)" ${g.pendidikan === 'D4 (Diploma) / S1 (Sarjana)' ? 'selected' : ''}>D4 (Diploma) / S1 (Sarjana)</option>
+                                <option value="S2 (Magister)" ${g.pendidikan === 'S2 (Magister)' ? 'selected' : ''}>S2 (Magister)</option>
+                                <option value="S3 (Doktor)" ${g.pendidikan === 'S3 (Doktor)' ? 'selected' : ''}>S3 (Doktor)</option>
+                            </select>
+                        </div>
                     </div>
                     ${passField}
                 </div>
@@ -1398,7 +1441,7 @@
                 confirmButtonText: 'Simpan Data',
                 cancelButtonText: 'Batal',
                 confirmButtonColor: '#0d9488',
-                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6', cancelButton: 'rounded-lg px-6', title: 'text-2xl font-bold' },
+                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold', title: 'text-2xl font-bold' },
                 preConfirm: () => {
                     const nuptk = document.getElementById('fm-nuptk').value.trim();
                     const nama = document.getElementById('fm-nama').value.trim();
@@ -1438,12 +1481,7 @@
         }
 
         window.generatePasswordForGuru = function () {
-            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            let pass = "";
-            for (let i = 0; i < 6; i++) {
-                pass += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            document.getElementById('fm-pass').value = pass;
+            document.getElementById('fm-pass').value = generateRandomPass();
         };
 
         function editGuru(nuptk) {
@@ -1460,7 +1498,7 @@
                 confirmButtonColor: '#e11d48',
                 confirmButtonText: 'Ya, Hapus Data',
                 cancelButtonText: 'Batal',
-                customClass: { popup: 'rounded-2xl', confirmButton: 'rounded-lg px-6 shadow-md', cancelButton: 'rounded-lg px-6' }
+                customClass: { popup: 'rounded-2xl', confirmButton: 'rounded-lg px-6 font-semibold shadow-md', cancelButton: 'rounded-lg px-6 font-semibold' }
             }).then((res) => {
                 if (res.isConfirmed) {
                     state.dataGuru = state.dataGuru.filter(x => x.nuptk !== nuptk);
@@ -1480,7 +1518,7 @@
                 confirmButtonText: 'Ya, Generate',
                 cancelButtonText: 'Batal',
                 confirmButtonColor: '#0d9488',
-                customClass: { popup: 'rounded-2xl', confirmButton: 'rounded-lg px-6 shadow-md', cancelButton: 'rounded-lg px-6' }
+                customClass: { popup: 'rounded-2xl', confirmButton: 'rounded-lg px-6 font-semibold shadow-md', cancelButton: 'rounded-lg px-6 font-semibold' }
             }).then((res) => {
                 if (res.isConfirmed) {
                     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -1497,10 +1535,10 @@
 
                         Swal.fire({
                             title: 'Berhasil!',
-                            html: `<p class="text-sm font-semibold text-slate-600 mb-2">Sandi baru untuk <b>${state.dataGuru[guruIdx].nama}</b> adalah:</p><div class="text-3xl font-extrabold text-slate-800 p-4 bg-slate-100 rounded-xl border border-slate-200 tracking-wider">${pass}</div>`,
+                            html: `<p class="text-[16px] font-semibold text-slate-600 mb-2">Sandi baru untuk <b>${state.dataGuru[guruIdx].nama}</b> adalah:</p><div style="font-family: 'Tahoma', sans-serif; letter-spacing: 1.5px;" class="text-3xl font-semibold text-slate-800 p-2 bg-slate-100 rounded-xl border border-slate-200 tracking-wider">${pass}</div>`,
                             icon: 'success',
                             confirmButtonColor: '#0d9488',
-                            customClass: { popup: 'rounded-2xl', confirmButton: 'rounded-lg px-8' }
+                            customClass: { popup: 'rounded-2xl', confirmButton: 'rounded-lg px-6' }
                         });
                     }
                 }
@@ -1584,8 +1622,8 @@
                             <h2 class="text-xl font-extrabold text-slate-800">Rekapitulasi Absensi</h2>
                         </div>
                         <div class="flex flex-wrap gap-3 w-full xl:w-auto">
-                            <input type="month" id="filter-bulan" value="${currentYYYYMM}" onchange="loadTableRekap()" class="p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none text-sm font-semibold bg-white flex-1 xl:flex-none">
-                            <select id="filter-status" onchange="loadTableRekap()" class="p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none text-sm font-semibold bg-white flex-1 xl:flex-none cursor-pointer">
+                            <input type="month" id="filter-bulan" value="${currentYYYYMM}" onchange="loadTableRekap()" class="p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none text-sm font-semibold bg-white flex-1 xl:flex-none">
+                            <select id="filter-status" onchange="loadTableRekap()" class="p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none text-sm font-semibold bg-white flex-1 xl:flex-none cursor-pointer">
                                 <option value="semua">Semua Status</option>
                                 <option value="Hadir">Hadir</option>
                                 <option value="Sakit">Sakit</option>
@@ -1593,21 +1631,21 @@
                                 <option value="Cuti">Cuti</option>
                                 <option value="Alpa">Alpa</option>
                             </select>
-                            <button onclick="exportRekap()" class="bg-emerald-600 hover:bg-emerald-700 text-white p-2.5 px-4 rounded-lg shadow-md text-sm font-bold transition-all flex items-center justify-center gap-2"><i class="fas fa-file-excel"></i> <span class="hidden sm:inline">Export Excel</span></button>
-                            <button onclick="hapusRekap()" class="bg-rose-50 hover:bg-rose-500 hover:text-white text-rose-600 p-2.5 px-4 rounded-lg border border-rose-200 text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-sm"><i class="fas fa-trash-alt"></i> <span class="hidden sm:inline">Kosongkan</span></button>
+                            <button onclick="exportRekap()" class="bg-emerald-600 hover:bg-emerald-700 text-white p-2 px-4 rounded-lg shadow-md text-sm font-bold transition-all flex items-center justify-center gap-2"><i class="fas fa-file-excel"></i> <span class="hidden sm:inline">Export Rekap</span></button>
+                            <button onclick="hapusRekap()" class="bg-rose-50 hover:bg-rose-500 hover:text-white text-rose-600 p-2 px-4 rounded-lg border border-rose-200 text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-sm"><i class="fas fa-trash-alt"></i> <span class="hidden sm:inline">Kosongkan</span></button>
                         </div>
                     </div>
                     <div class="flex-1 overflow-auto custom-scrollbar relative">
-                        <table class="w-full text-left text-sm text-slate-600 whitespace-nowrap">
+                        <table class="w-full text-left text-sm text-slate-600 whitespace-nowrap" id="tabel-rekap">
                             <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0 z-10 shadow-sm">
                                 <tr>
-                                    <th class="py-3 px-3 text-center min-w-[110px]">Tanggal</th>
-                                    <th class="py-3 px-3 text-center min-w-[160px]">NUPTK/PEG ID</th>
-                                    <th class="py-3 px-3 text-center min-w-[200px]">Nama Lengkap</th>
-                                    <th class="py-3 px-3 text-center min-w-[100px]">Jenis Tunjangan</th>
-                                    <th class="py-3 px-3 text-center min-w-[100px]">Status</th>
-                                    <th class="py-3 px-3 text-center min-w-[100px]">Waktu Masuk</th>
-                                    <th class="py-3 px-3 text-center min-w-[150px]">Keterangan</th>
+                                    <th class="py-3 px-3 text-center min-w-[110px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-rekap', 0, 'date')">Tanggal <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[160px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-rekap', 1, 'string')">NUPTK/PEG ID <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[200px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-rekap', 2, 'string')">Nama Lengkap <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[100px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-rekap', 3, 'string')">Jenis Tunjangan <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[100px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-rekap', 4, 'string')">Status <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[100px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-rekap', 5, 'string')">Waktu Masuk <i class="fas fa-sort ml-1 text-slate-400"></i></th>
+                                    <th class="py-3 px-3 text-center min-w-[150px] cursor-pointer hover:bg-slate-200 transition-colors" onclick="sortTable('tabel-rekap', 6, 'string')">Keterangan <i class="fas fa-sort ml-1 text-slate-400"></i></th>
                                 </tr>
                             </thead>
                             <tbody id="tbody-rekap">
@@ -1652,7 +1690,7 @@
 
                 return `
                 <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition-colors">
-                    <td class="py-3 px-3 text-center font-semibold border text-slate-700">${formattedDate}</td>
+                    <td class="py-3 px-3 text-center font-semibold border text-slate-700" data-val="${r.date}">${formattedDate}</td>
                     <td class="py-3 px-3 text-center font-semibold border text-slate-700">${r.nuptk}</td>
                     <td class="py-3 px-3 font-semibold border text-slate-800">${gName}</td>
                     <td class="py-3 px-3 text-center font-semibold border text-slate-700">${r.tunjangan || '-'}</td>
@@ -1827,9 +1865,9 @@
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#e11d48',
-                confirmButtonText: 'Ya, Hapus Permanen',
+                confirmButtonText: 'Ya, Hapus',
                 cancelButtonText: 'Batal',
-                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6', cancelButton: 'rounded-lg px-6' }
+                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold' }
             }).then(res => {
                 if (res.isConfirmed) {
                     const fBulan = document.getElementById('filter-bulan').value;
@@ -1864,14 +1902,14 @@
                         <div class="p-8 space-y-5">
                             <div>
                                 <label class="block text-sm font-bold text-slate-700 mb-1.5">Waktu Buka Absen</label>
-                                <input type="time" id="set-mulai" value="${state.pengaturan.waktuMulai}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none text-base font-bold text-center text-brand-700">
+                                <input type="time" id="set-mulai" value="${state.pengaturan.waktuMulai}" class="w-full p-2 bg-slate-50 border border-slate-400 rounded-lg focus:ring-2 focus:ring-brand-500 outline-none text-base font-bold text-center text-brand-700">
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-slate-700 mb-1.5">Batas Akhir (Ditutup)</label>
-                                <input type="time" id="set-akhir" value="${state.pengaturan.batasAkhir}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-rose-500 outline-none text-base font-bold text-center text-rose-600">
+                                <input type="time" id="set-akhir" value="${state.pengaturan.batasAkhir}" class="w-full p-2 bg-slate-50 border border-slate-400 rounded-lg focus:ring-2 focus:ring-rose-500 outline-none text-base font-bold text-center text-rose-600">
                             </div>
                             <div class="md:col-span-2 text-right border-t border-slate-100 pt-6 mt-2">
-                                <button onclick="simpanJam()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5">Terapkan Jadwal</button>
+                                <button onclick="simpanJam()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5">Terapkan Jadwal</button>
                             </div>
                         </div>
                     </div>
@@ -1884,16 +1922,16 @@
                         <div class="p-8 space-y-5">
                             <div class="relative">
                                 <label class="block text-sm font-bold text-slate-700 mb-1.5">Kata Sandi Baru</label>
-                                <input type="password" id="set-pass1" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-slate-500 outline-none transition-all pr-12 font-medium">
+                                <input type="password" id="set-pass1" class="w-full p-2 bg-slate-50 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-slate-500 outline-none transition-all pr-12 font-medium">
                                 <button onclick="togglePass('set-pass1')" class="absolute bottom-2.5 right-4 text-slate-400 hover:text-slate-700"><i class="fas fa-eye text-lg"></i></button>
                             </div>
                             <div class="relative">
                                 <label class="block text-sm font-bold text-slate-700 mb-1.5">Konfirmasi Kata Sandi Baru</label>
-                                <input type="password" id="set-pass2" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-slate-500 outline-none transition-all pr-12 font-medium">
+                                <input type="password" id="set-pass2" class="w-full p-2 bg-slate-50 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-slate-500 outline-none transition-all pr-12 font-medium">
                                 <button onclick="togglePass('set-pass2')" class="absolute bottom-2.5 right-4 text-slate-400 hover:text-slate-700"><i class="fas fa-eye text-lg"></i></button>
                             </div>
                             <div class="text-right pt-6 border-t border-slate-100 mt-2">
-                                <button onclick="simpanPassAdmin()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5">Simpan Sandi Baru</button>
+                                <button onclick="simpanPassAdmin()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5">Simpan Sandi Baru</button>
                             </div>
                         </div>
                     </div>
@@ -1909,7 +1947,7 @@
                                 <p class="text-slate-500 text-sm">Tindakan ini akan menghapus seluruh data guru, rekap absen, pengumuman, pengaturan, dan akun admin dari perangkat ini maupun Cloud secara permanen. Aplikasi akan kembali ke kondisi awal.</p>
                             </div>
                             <div class="text-right pt-6 border-t border-slate-100 mt-2">
-                                <button onclick="factoryReset()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-2.5 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5"><i class="fas fa-trash-alt"></i> Reset Pabrik</button>
+                                <button onclick="factoryReset()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5"><i class="fas fa-trash-alt"></i> Reset Pabrik</button>
                             </div>
                         </div>
                     </div>
@@ -1927,7 +1965,7 @@
                 cancelButtonColor: '#94a3b8',
                 confirmButtonText: 'Ya, Hapus Semua',
                 cancelButtonText: 'Batal',
-                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 shadow-md', cancelButton: 'rounded-lg px-6' }
+                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold shadow-md', cancelButton: 'rounded-lg px-6 font-semibold' }
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
@@ -2010,13 +2048,13 @@
                         <div class="p-6 space-y-4">
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Judul</label>
-                                <input type="text" id="peng-judul" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none font-semibold text-slate-700 transition-all" placeholder="Misal: Info Rapat...">
+                                <input type="text" id="peng-judul" class="w-full p-2.5 bg-slate-50 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none font-semibold text-slate-700 transition-all" placeholder="Misal: Info Rapat...">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Isi Pesan</label>
-                                <textarea id="peng-isi" rows="7" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none font-medium text-slate-600 transition-all resize-none custom-scrollbar" placeholder="Ketik rincian pengumuman di sini..."></textarea>
+                                <textarea id="peng-isi" rows="7" class="w-full p-2.5 bg-slate-50 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none font-medium text-slate-600 transition-all resize-none custom-scrollbar" placeholder="Ketik rincian pengumuman di sini..."></textarea>
                             </div>
-                            <button onclick="tambahPengumuman()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-lg transition-all shadow-md mt-2 flex justify-center items-center gap-2"><i class="fas fa-paper-plane"></i> Publikasikan</button>
+                            <button onclick="tambahPengumuman()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg transition-all shadow-md mt-2 flex justify-center items-center gap-2"><i class="fas fa-paper-plane"></i> Publikasikan</button>
                         </div>
                     </div>
                     <div class="lg:col-span-1 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[490px]">
@@ -2062,16 +2100,24 @@
                         <div class="w-full md:w-2/5 border border-slate-200 rounded-xl p-6 md:p-8 flex flex-col items-center justify-center text-center bg-white shadow-sm relative overflow-hidden h-fit">
                             <div class="absolute inset-0 bg-brand-600 opacity-5" style="background-image: radial-gradient(#0d9488 1.5px, transparent 1.5px); background-size: 20px 20px;"></div>
                             <div class="relative z-10 mb-5">
-                                <img src="${g.foto || 'https://placehold.co/150x150/e2e8f0/64748b?text=Foto'}" class="w-36 h-36 md:w-44 md:h-44 rounded-full border-[3px] border-white shadow-xl object-cover bg-slate-100">
-                                <div class="absolute bottom-1 right-2 bg-brand-500 text-white w-10 h-10 rounded-full flex items-center justify-center border-2 border-white shadow-md">
-                                    <i class="fas fa-chalkboard-teacher"></i>
-                                </div>
+                                <img src="${g.foto || 'https://placehold.co/150x150/e2e8f0/64748b?text=Foto'}" class="w-32 h-32 md:w-36 md:h-36 rounded-full border-[3px] border-white shadow-xl object-cover bg-slate-100">
                             </div>
                             <h2 class="text-2xl font-extrabold text-slate-800 relative z-10 mb-2 leading-tight">${g.nama}</h2>
                             <p class="text-brand-600 font-bold tracking-wide relative z-10 flex items-center gap-2 mb-8 bg-brand-50 px-4 py-2.5 rounded-full border border-brand-100 shadow-sm"><i class="fas fa-award"></i> ${g.jabatan}</p>
-                            <button onclick="showEditBiodata()" class="relative z-10 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 px-6 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 w-full flex items-center justify-center gap-3">
-                                <i class="fas fa-user-edit text-lg"></i> Perbarui Profil
-                            </button>
+                            <div class="relative z-10 flex flex-col w-full gap-3">
+                                <div class="flex gap-3 w-full">
+                                    <label class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex-1 flex items-center justify-center gap-2 text-sm cursor-pointer">
+                                        <i class="fas fa-camera text-lg"></i> Unggah Foto
+                                        <input type="file" class="hidden" accept="image/*" onchange="handleFotoGuruUpload(event)">
+                                    </label>
+                                    <button onclick="hapusFotoGuruInline()" class="bg-rose-100 hover:bg-rose-200 text-rose-600 font-bold py-2 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 flex-1 flex items-center justify-center gap-2 text-sm">
+                                        <i class="fas fa-trash text-lg"></i> Hapus Foto
+                                    </button>
+                                </div>
+                                <button onclick="showEditBiodata()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5 w-full flex items-center justify-center gap-2 text-sm">
+                                    <i class="fas fa-user-edit text-lg"></i> Ubah Data
+                                </button>
+                            </div>
                         </div>
                         <div class="w-full md:w-3/5 border border-slate-200 rounded-xl p-6 md:p-8 bg-white shadow-sm flex flex-col justify-center">
                             <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
@@ -2079,29 +2125,29 @@
                                 <h3 class="text-xl font-extrabold text-slate-800">Detail Informasi Diri</h3>
                             </div>
                             <div class="space-y-3.5">
-                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2.5 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 tracking-wider leading-tight">NUPTK/PEG ID</span>
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 text-center">:</span>
+                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 tracking-wider leading-tight">NUPTK/PEG ID</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 text-center">:</span>
                                     <span class="text-sm sm:text-base font-bold text-slate-700 break-words">${g.nuptk}</span>
                                 </div>
-                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2.5 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 tracking-wider leading-tight">Tempat Lahir</span>
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 text-center">:</span>
+                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 tracking-wider leading-tight">Tempat Lahir</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 text-center">:</span>
                                     <span class="text-sm sm:text-base font-bold text-slate-700 break-words">${g.tmLahir}</span>
                                 </div>
-                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2.5 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 tracking-wider leading-tight">Tanggal Lahir</span>
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 text-center">:</span>
+                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 tracking-wider leading-tight">Tanggal Lahir</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 text-center">:</span>
                                     <span class="text-sm sm:text-base font-bold text-slate-700 break-words">${formatDateID(g.tglLahir)}</span>
                                 </div>
-                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2.5 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 tracking-wider leading-tight">Jabatan</span>
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 text-center">:</span>
+                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 tracking-wider leading-tight">Jabatan</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 text-center">:</span>
                                     <span class="text-sm sm:text-base font-bold text-slate-700 break-words">${g.jabatan}</span>
                                 </div>
-                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2.5 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 tracking-wider leading-tight">Pendidikan Terakhir</span>
-                                    <span class="text-sm sm:text-base font-bold text-slate-600 text-center">:</span>
+                                <div class="grid grid-cols-[160px_14px_1fr] sm:grid-cols-[200px_16px_1fr] items-center bg-slate-50/60 p-2 sm:p-2 rounded-lg border border-slate-100 hover:bg-slate-50 transition-colors">
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 tracking-wider leading-tight">Pendidikan Terakhir</span>
+                                    <span class="text-sm sm:text-base font-bold text-slate-700 text-center">:</span>
                                     <span class="text-sm sm:text-base font-bold text-slate-700 break-words">${g.pendidikan || '-'}</span>
                                 </div>
                             </div>
@@ -2117,64 +2163,65 @@
                 title: 'Perbarui Data Diri',
                 html: `
                     <div class="text-left space-y-4 mt-6">
-                        <div class="flex flex-col items-center mb-6 p-4 bg-slate-50 rounded-lg border border-slate-100">
-                            <img id="edit-prev-foto" src="${g.foto || 'https://placehold.co/100x100/f1f5f9/94a3b8?text=Foto'}" class="w-24 h-24 rounded-full object-cover border-2 border-white shadow-md mb-4 bg-transparent">
-                            <div class="flex gap-3">
-                                <label class="bg-brand-100 hover:bg-brand-200 text-brand-700 font-bold py-2 px-4 rounded-lg cursor-pointer transition-colors text-sm shadow-sm">
-                                    <i class="fas fa-camera mr-1"></i> Ganti
-                                    <input type="file" class="hidden" accept="image/*" onchange="previewEditFoto(event)">
-                                </label>
-                                <button onclick="hapusFotoEdit()" class="bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold py-2 px-4 rounded-lg border border-rose-100 shadow-sm text-sm transition-colors"><i class="fas fa-times mr-1"></i> Hapus</button>
+                        <div class="flex items-center gap-4">
+                            <label class="w-1/3 text-sm font-bold text-slate-700">NUPTK/PEG ID</label>
+                            <div class="w-2/3">
+                                <input type="text" id="eb-nuptk" value="${g.nuptk}" disabled oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 tracking-wider mb-1.5">NUPTK/PEG ID <span class="text-[10px] ml-1 bg-slate-200 px-1 rounded">(Terkunci)</span></label>
-                            <input type="text" id="eb-nuptk" value="${g.nuptk}" disabled oninput="this.value = this.value.replace(/[^0-9]/g, '')" inputmode="numeric" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 tracking-wider mb-1.5">Nama Lengkap</label>
-                            <input type="text" id="eb-nama" value="${g.nama}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-bold text-slate-700 tracking-wider mb-1.5">Tempat Lahir</label>
-                                <input type="text" id="eb-tmlahir" value="${g.tmLahir}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-bold text-slate-700 tracking-wider mb-1.5">Tanggal Lahir</label>
-                                <input type="date" id="eb-tgllahir" value="${g.tglLahir}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
+                        <div class="flex items-center gap-4">
+                            <label class="w-1/3 text-sm font-bold text-slate-700">Nama Lengkap</label>
+                            <div class="w-2/3">
+                                <input type="text" id="eb-nama" value="${g.nama}" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 tracking-wider mb-1.5">Jabatan <span class="text-[10px] ml-1 bg-slate-200 px-1 rounded">(Terkunci)</span></label>
-                            <input type="text" id="eb-jabatan" value="${g.jabatan}" disabled class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold">
+                        <div class="flex items-center gap-4">
+                            <label class="w-1/3 text-sm font-bold text-slate-700">Tempat Lahir</label>
+                            <div class="w-2/3">
+                                <input type="text" id="eb-tmlahir" value="${g.tmLahir}" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 tracking-wider mb-1.5">Pendidikan Terakhir</label>
-                            <select id="eb-pendidikan" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold cursor-pointer">
-                                <option value="" ${!g.pendidikan ? 'selected' : ''} disabled>Pilih Pendidikan</option>
-                                <option value="SMA / MA / SMK" ${g.pendidikan === 'SMA / MA / SMK' ? 'selected' : ''}>SMA / MA / SMK</option>
-                                <option value="D1 (Diploma)" ${g.pendidikan === 'D1 (Diploma)' ? 'selected' : ''}>D1 (Diploma)</option>
-                                <option value="D2 (Diploma)" ${g.pendidikan === 'D2 (Diploma)' ? 'selected' : ''}>D2 (Diploma)</option>
-                                <option value="D3 (Diploma)" ${g.pendidikan === 'D3 (Diploma)' ? 'selected' : ''}>D3 (Diploma)</option>
-                                <option value="D4 (Diploma) / S1 (Sarjana)" ${g.pendidikan === 'D4 (Diploma) / S1 (Sarjana)' ? 'selected' : ''}>D4 (Diploma) / S1 (Sarjana)</option>
-                                <option value="S2 (Magister)" ${g.pendidikan === 'S2 (Magister)' ? 'selected' : ''}>S2 (Magister)</option>
-                                <option value="S3 (Doktor)" ${g.pendidikan === 'S3 (Doktor)' ? 'selected' : ''}>S3 (Doktor)</option>
-                            </select>
+                        <div class="flex items-center gap-4">
+                            <label class="w-1/3 text-sm font-bold text-slate-700">Tanggal Lahir</label>
+                            <div class="w-2/3">
+                                <input type="date" id="eb-tgllahir" value="${g.tglLahir}" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
+                            </div>
                         </div>
-                        <div class="relative">
-                            <label class="block text-sm font-bold text-slate-700 tracking-wider mb-1.5">Ubah Sandi</label>
-                            <input type="password" id="eb-pass" value="${g.password}" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-600 font-bold pr-10">
-                            <button onclick="togglePass('eb-pass')" class="absolute bottom-3 right-3 text-slate-400 hover:text-slate-600"><i class="fas fa-eye"></i></button>
+                        <div class="flex items-center gap-4">
+                            <label class="w-1/3 text-sm font-bold text-slate-700">Jabatan</label>
+                            <div class="w-2/3">
+                                <input type="text" id="eb-jabatan" value="${g.jabatan}" disabled class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold">
+                            </div>
                         </div>
-                        <input type="hidden" id="eb-foto" value="${g.foto}">
+                        <div class="flex items-center gap-4">
+                            <label class="w-1/3 text-sm font-bold text-slate-700">Pendidikan</label>
+                            <div class="w-2/3">
+                                <select id="eb-pendidikan" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold cursor-pointer">
+                                    <option value="" ${!g.pendidikan ? 'selected' : ''} disabled>Pilih Pendidikan</option>
+                                    <option value="SMA / MA / SMK" ${g.pendidikan === 'SMA / MA / SMK' ? 'selected' : ''}>SMA / MA / SMK</option>
+                                    <option value="D1 (Diploma)" ${g.pendidikan === 'D1 (Diploma)' ? 'selected' : ''}>D1 (Diploma)</option>
+                                    <option value="D2 (Diploma)" ${g.pendidikan === 'D2 (Diploma)' ? 'selected' : ''}>D2 (Diploma)</option>
+                                    <option value="D3 (Diploma)" ${g.pendidikan === 'D3 (Diploma)' ? 'selected' : ''}>D3 (Diploma)</option>
+                                    <option value="D4 (Diploma) / S1 (Sarjana)" ${g.pendidikan === 'D4 (Diploma) / S1 (Sarjana)' ? 'selected' : ''}>D4 (Diploma) / S1 (Sarjana)</option>
+                                    <option value="S2 (Magister)" ${g.pendidikan === 'S2 (Magister)' ? 'selected' : ''}>S2 (Magister)</option>
+                                    <option value="S3 (Doktor)" ${g.pendidikan === 'S3 (Doktor)' ? 'selected' : ''}>S3 (Doktor)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <label class="w-1/3 text-sm font-bold text-slate-700">Kata Sandi</label>
+                            <div class="w-2/3">
+                                <input type="password" id="eb-pass" value="${g.password}" class="w-full p-2 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none transition-all text-sm text-slate-700 font-bold pr-10">
+                                <button onclick="togglePass('eb-pass')" class="absolute bottom-24 right-10 flex items-center mb-2.5 text-slate-400 hover:text-slate-600"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
                     </div>
                 `,
                 showCancelButton: true,
                 confirmButtonColor: '#0d9488',
                 confirmButtonText: 'Simpan Profil',
                 cancelButtonText: 'Batal',
-                customClass: { popup: 'rounded-xl pb-4', confirmButton: 'rounded-lg px-6 font-bold shadow-md', cancelButton: 'rounded-lg px-6 font-bold', title: 'text-2xl font-bold' },
+                customClass: { popup: 'rounded-xl pb-4', confirmButton: 'rounded-lg px-6 font-semibold shadow-md', cancelButton: 'rounded-lg px-6 font-semibold', title: 'text-2xl font-bold' },
                 preConfirm: () => {
                     const nama = document.getElementById('eb-nama').value.trim();
                     if (!nama) return Swal.showValidationMessage('Nama lengkap wajib diisi');
@@ -2184,7 +2231,7 @@
                         tglLahir: document.getElementById('eb-tgllahir').value,
                         pendidikan: document.getElementById('eb-pendidikan').value || '',
                         password: document.getElementById('eb-pass').value || g.password,
-                        foto: document.getElementById('eb-foto').value
+                        foto: g.foto
                     };
                 }
             }).then(res => {
@@ -2198,25 +2245,33 @@
             });
         }
 
-        window.previewEditFoto = function (e) {
+        window.handleFotoGuruUpload = function (e) {
             const file = e.target.files[0];
             if (file) {
                 if (file.size > 512000) {
                     showAlert('Gagal Unggah', 'Ukuran foto profil maksimal 500 KB.', 'error');
-                    e.target.value = ''; // Reset input file
+                    e.target.value = '';
                     return;
                 }
 
                 compressImage(file, 400, (compressedBase64) => {
-                    document.getElementById('edit-prev-foto').src = compressedBase64;
-                    document.getElementById('eb-foto').value = compressedBase64;
+                    const idx = state.dataGuru.findIndex(x => x.nuptk === state.currentUser.id);
+                    if (idx > -1) {
+                        state.dataGuru[idx].foto = compressedBase64;
+                        saveState();
+                        Swal.fire({ icon: 'success', title: 'Foto Diperbarui', toast: true, position: 'top-end', timer: 2000, showConfirmButton: false }).then(() => renderLayout());
+                    }
                 });
             }
         };
 
-        window.hapusFotoEdit = function () {
-            document.getElementById('edit-prev-foto').src = 'https://placehold.co/100x100/f1f5f9/94a3b8?text=Foto';
-            document.getElementById('eb-foto').value = '';
+        window.hapusFotoGuruInline = function () {
+            const idx = state.dataGuru.findIndex(x => x.nuptk === state.currentUser.id);
+            if (idx > -1 && state.dataGuru[idx].foto) {
+                state.dataGuru[idx].foto = '';
+                saveState();
+                Swal.fire({ icon: 'success', title: 'Foto Dihapus', toast: true, position: 'top-end', timer: 2000, showConfirmButton: false }).then(() => renderLayout());
+            }
         };
 
         function renderAbsenUI(container) {
@@ -2325,7 +2380,7 @@
                         <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden h-full flex flex-col relative">
                             <div class="bg-slate-800 p-5 border-b border-slate-700 text-center z-10 relative overflow-hidden shadow-inner">
                                 <div class="absolute inset-0 bg-brand-600 opacity-20 pattern-diagonal-lines"></div>
-                                <p class="text-lg text-brand-200 font-bold mb-1 relative z-10 tracking-widest" id="realtime-date">Memuat Tanggal...</p>
+                                <p class="text-sm text-brand-200 font-bold mb-2 relative z-10 tracking-widest" id="realtime-date">Memuat Tanggal...</p>
                                 <p class="text-3xl text-white font-black tracking-widest relative z-10" id="realtime-clock">--:--:-- WIB</p>
                             </div>
                             <div class="bg-slate-50 px-8 py-5 border-b border-slate-200 flex justify-between items-center z-10">
@@ -2347,7 +2402,7 @@
                                     <div class="w-full max-w-sm mb-8 fade-in relative z-10 bg-slate-50 p-5 rounded-xl border border-slate-100 shadow-sm">
                                         <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 text-center">Langkah 1: Pilih Jenis Tunjangan</label>
                                         <div class="relative">
-                                            <select id="input-tunjangan" class="w-full p-4 bg-white border-2 border-brand-200 rounded-lg focus:border-brand-500 focus:ring-4 focus:ring-brand-50 outline-none text-brand-700 font-extrabold cursor-pointer appearance-none text-center shadow-sm transition-all text-lg">
+                                            <select id="input-tunjangan" class="w-full p-2 bg-white border-2 border-brand-200 rounded-lg focus:border-brand-500 focus:ring-4 focus:ring-brand-50 outline-none text-brand-700 font-extrabold cursor-pointer appearance-none text-center shadow-sm transition-all text-lg">
                                                 <option value="" disabled selected>-- Pilih --</option>
                                                 <option value="Inpassing">Inpassing</option>
                                                 <option value="Sertifikasi">Sertifikasi</option>
@@ -2463,15 +2518,15 @@
                     <div class="space-y-4 text-left mt-4">
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-1">Tanggal Mulai Cuti</label>
-                            <input type="date" id="cuti-mulai" min="${today}" value="${today}" class="w-full p-2.5 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 font-semibold text-slate-700">
+                            <input type="date" id="cuti-mulai" min="${today}" value="${today}" class="w-full p-2 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 font-semibold text-slate-700">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-1">Tanggal Berakhir Cuti</label>
-                            <input type="date" id="cuti-akhir" min="${today}" value="${today}" class="w-full p-2.5 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 font-semibold text-slate-700">
+                            <input type="date" id="cuti-akhir" min="${today}" value="${today}" class="w-full p-2 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 font-semibold text-slate-700">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-1">Keterangan / Alasan Cuti</label>
-                            <textarea id="cuti-alasan" rows="3" class="w-full p-2.5 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 font-medium text-slate-600" placeholder="Misal: Umroh, Cuti Melahirkan, dsb."></textarea>
+                            <textarea id="cuti-alasan" rows="3" class="w-full p-2 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 font-medium text-slate-600" placeholder="Misal: Umroh, Cuti Melahirkan, dsb."></textarea>
                         </div>
                         <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg flex items-start gap-2">
                             <i class="fas fa-info-circle text-amber-500 mt-0.5"></i>
@@ -2483,7 +2538,7 @@
                 confirmButtonText: 'Ajukan Cuti',
                 cancelButtonText: 'Batal',
                 confirmButtonColor: '#0d9488',
-                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-bold', cancelButton: 'rounded-lg px-6' },
+                customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold', title: 'text-2xl font-bold' },
                 preConfirm: () => {
                     const mulai = document.getElementById('cuti-mulai').value;
                     const akhir = document.getElementById('cuti-akhir').value;
@@ -2578,7 +2633,7 @@
                     confirmButtonText: 'Kirim',
                     cancelButtonText: 'Batal',
                     confirmButtonColor: '#0d9488',
-                    customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6', cancelButton: 'rounded-lg px-6' },
+                    customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold', title: 'text-2xl font-bold' },
                     inputValidator: (value) => {
                         if (!value) return 'Keterangan tidak boleh kosong untuk izin/sakit!';
                     }
@@ -2638,6 +2693,67 @@
                 renderLogin();
             }
         }
+
+        window.sortTable = function (tableId, colIndex, type = 'string') {
+            const table = document.getElementById(tableId);
+            if (!table) return;
+            const tbody = table.tBodies[0];
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+
+            // Tentukan arah pengurutan (Ascending / Descending)
+            let dir = table.getAttribute("data-sort-dir") === "asc" ? "desc" : "asc";
+            let lastCol = table.getAttribute("data-sort-col");
+
+            // Jika user klik kolom baru, reset ke Ascending
+            if (lastCol != colIndex) {
+                dir = "asc";
+            }
+
+            table.setAttribute("data-sort-dir", dir);
+            table.setAttribute("data-sort-col", colIndex);
+
+            // Proses pengurutan
+            rows.sort((a, b) => {
+                let cellA = a.cells[colIndex];
+                let cellB = b.cells[colIndex];
+                if (!cellA || !cellB) return 0;
+
+                // Gunakan atribut 'data-val' jika ada (berguna untuk parsing tanggal), jika tidak gunakan innerText
+                let valA = cellA.getAttribute("data-val") || cellA.innerText.trim();
+                let valB = cellB.getAttribute("data-val") || cellB.innerText.trim();
+
+                if (type === 'numeric') {
+                    valA = parseFloat(valA.replace(/[^0-9.-]+/g, "")) || 0;
+                    valB = parseFloat(valB.replace(/[^0-9.-]+/g, "")) || 0;
+                    return dir === "asc" ? valA - valB : valB - valA;
+                } else if (type === 'date') {
+                    valA = new Date(valA).getTime() || 0;
+                    valB = new Date(valB).getTime() || 0;
+                    return dir === "asc" ? valA - valB : valB - valA;
+                } else {
+                    return dir === "asc" ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                }
+            });
+
+            // Kosongkan tbody lalu masukkan ulang baris yang sudah diurutkan
+            tbody.innerHTML = "";
+            rows.forEach(row => tbody.appendChild(row));
+
+            // Perbarui Ikon sort di T-Head
+            const thead = table.tHead;
+            if (thead) {
+                const ths = thead.querySelectorAll('th');
+                ths.forEach((th, idx) => {
+                    const icon = th.querySelector('i');
+                    if (icon && icon.classList.contains('fa-sort') || icon.classList.contains('fa-sort-up') || icon.classList.contains('fa-sort-down')) {
+                        icon.className = 'fas fa-sort ml-1 text-slate-400'; // Reset ikon
+                        if (idx === colIndex) {
+                            icon.className = dir === 'asc' ? 'fas fa-sort-up ml-1 text-brand-600' : 'fas fa-sort-down ml-1 text-brand-600';
+                        }
+                    }
+                });
+            }
+        };
 
         window.toggleHeaderMenu = function () {
             const dropdown = document.getElementById('header-dropdown');

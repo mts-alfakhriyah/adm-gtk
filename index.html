@@ -556,7 +556,7 @@
                 if (nsm === state.adminAuth.nsm && pass === state.adminAuth.password) {
                     state.currentUser = { role: 'admin', id: nsm, name: state.profil.nama || 'Admin Madrasah' };
                     saveState();
-                    addLog('Admin Login');
+                    addLog(`Admin ${state.currentUser.name} Masuk`);
                     checkAutoAlpa();
                     Swal.close();
                     renderLayout();
@@ -572,7 +572,7 @@
                 if (guru) {
                     state.currentUser = { role: 'guru', id: guru.nuptk, name: guru.nama };
                     saveState();
-                    addLog(`Guru Login: ${guru.nama}`);
+                    addLog(`${guru.nama} Masuk`);
                     checkAutoAlpa();
                     Swal.close();
                     renderLayout();
@@ -596,7 +596,10 @@
                 customClass: { confirmButton: 'rounded-lg px-6 font-semibold', cancelButton: 'rounded-lg px-6 font-semibold' }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    if (state.currentUser) addLog(`${state.currentUser.name} Logout`);
+                    if (state.currentUser) {
+                        const prefix = state.currentUser.role === 'admin' ? 'Admin ' : '';
+                        addLog(`${prefix}${state.currentUser.name} Keluar`);
+                    }
                     state.currentUser = null;
                     saveState();
                     renderLogin();
@@ -1531,7 +1534,7 @@
                     if (guruIdx > -1) {
                         state.dataGuru[guruIdx].password = pass;
                         saveState();
-                        addLog(`Admin me-reset sandi guru: ${state.dataGuru[guruIdx].nama}`);
+                        addLog(`Admin ${state.currentUser.name} mengatur ulang kata sandi ${state.dataGuru[guruIdx].nama}`);
 
                         Swal.fire({
                             title: 'Berhasil!',
@@ -2020,7 +2023,7 @@
 
             state.adminAuth.password = p1;
             saveState();
-            addLog('Admin memperbarui kata sandi utama');
+            addLog('Admin ${state.currentUser.name} memperbarui kata sandi utama');
             document.getElementById('set-pass1').value = '';
             document.getElementById('set-pass2').value = '';
             Swal.fire({ icon: 'success', title: 'Keamanan Diperbarui', text: 'Sandi admin berhasil diubah.', toast: true, position: 'top-end', timer: 3000, showConfirmButton: false });

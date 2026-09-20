@@ -1161,10 +1161,10 @@
                         </div>
                         <div class="flex gap-2 w-full sm:w-auto">
                             <button onclick="showKelolaGuruModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-5 rounded-lg shadow-md flex items-center justify-center transition-all transform hover:-translate-y-0.5 text-sm">
-                                <i class="fas fa-plus-circle mr-2"></i> Tambah Data
+                                <i class="fas fa-plus-circle mr-2"></i> <span class="hidden sm:inline"> Tambah Data</span>
                             </button>
                             <button onclick="exportDataGuru()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-5 rounded-lg shadow-md flex items-center justify-center transition-all transform hover:-translate-y-0.5 text-sm">
-                                <i class="fas fa-file-excel mr-2"></i> Export Data
+                                <i class="fas fa-file-excel mr-2"></i> <span class="hidden sm:inline"> Export Data</span>
                             </button>
                         </div>
                     </div>
@@ -1890,7 +1890,7 @@
 
                     state.rekapAbsen = dataToKeep;
                     saveState();
-                    addLog(`Admin ${state.currentUser.name} menghapus data absensi massal (Filter: ${fBulan || 'Semua'})`);
+                    addLog(`Admin ${state.currentUser.name} menghapus data absensi massal (${fBulan || 'Semua'})`);
                     loadTableRekap();
                     Swal.fire({ icon: 'success', title: 'Data Dihapus', toast: true, position: 'top-end', timer: 2500, showConfirmButton: false });
                 }
@@ -1984,7 +1984,8 @@
                         },
                         showCancelButton: true,
                         confirmButtonText: 'Eksekusi Reset',
-                        confirmButtonColor: '#e11d48'
+                        confirmButtonColor: '#e11d48',
+                        customClass: { popup: 'rounded-xl', confirmButton: 'rounded-lg px-6 font-semibold shadow-md', cancelButton: 'rounded-lg px-6 font-semibold', title: 'text-2xl font-bold text-slate-700' }
                     }).then((res2) => {
                         if (res2.isConfirmed) {
                             state = {
@@ -2014,7 +2015,7 @@
             state.pengaturan.waktuMulai = document.getElementById('set-mulai').value;
             state.pengaturan.batasAkhir = document.getElementById('set-akhir').value;
             saveState();
-            addLog('Admin ${state.currentUser.name} mengubah pengaturan jam buka tutup absen');
+            addLog(`Admin ${state.currentUser.name} mengubah pengaturan jam buka tutup absen`);
             Swal.fire({ icon: 'success', title: 'Jadwal Diperbarui', toast: true, position: 'top-end', timer: 2500, showConfirmButton: false });
         }
 
@@ -2026,7 +2027,7 @@
 
             state.adminAuth.password = p1;
             saveState();
-            addLog('Admin ${state.currentUser.name} memperbarui kata sandi utama');
+            addLog(`Admin ${state.currentUser.name} memperbarui kata sandi utama`);
             document.getElementById('set-pass1').value = '';
             document.getElementById('set-pass2').value = '';
             Swal.fire({ icon: 'success', title: 'Keamanan Diperbarui', text: 'Sandi admin berhasil diubah.', toast: true, position: 'top-end', timer: 3000, showConfirmButton: false });
@@ -2060,7 +2061,7 @@
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Isi Pesan</label>
                                 <textarea id="peng-isi" rows="7" class="w-full p-2.5 bg-slate-50 border border-slate-400 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500 outline-none font-medium text-slate-600 transition-all resize-none custom-scrollbar" placeholder="Ketik rincian pengumuman di sini..."></textarea>
                             </div>
-                            <button onclick="tambahPengumuman()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg transition-all shadow-md mt-2 flex justify-center items-center gap-2"><i class="fas fa-paper-plane"></i> Publikasikan</button>
+                            <button onclick="tambahPengumuman()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded-lg transition-all shadow-md mt-2 ml-auto flex justify-center items-center gap-2"><i class="fas fa-paper-plane"></i> Publikasikan</button>
                         </div>
                     </div>
                     <div class="lg:col-span-1 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[490px]">
